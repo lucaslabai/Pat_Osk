@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101f21">
+<meta name="description" content="Minecraft — Wyzwanie Wiedzy. Darmowy quiz fanowski po polsku: 72 pytania, trzy talie i przygoda bez limitu czasu. Działa offline.">
+<title>Minecraft — Wyzwanie Wiedzy</title>
+<style>
+:root{color-scheme:dark;--bg:#101f21;--panel:#192e2f;--ink:#203534;--muted:#a9bdaf;--green:#b8e86d;--teal:#69ddca;--paper:#f6f5e9;--line:#35504a;--good:#246145;--bad:#a53833}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f6f5e9;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(90deg,#ffffff02 1px,transparent 1px),linear-gradient(#ffffff02 1px,transparent 1px);background-size:48px 48px;z-index:-1}button,input{font:inherit}button,label{ -webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.48}button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible+label{outline:3px solid var(--teal);outline-offset:5px}a{color:var(--teal)}[hidden]{display:none!important}.shell{width:min(1120px,calc(100% - 48px));margin:auto}.topbar{height:88px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:20px}.brand{display:flex;align-items:center;gap:13px;font-family:Consolas,"Courier New",monospace;font-size:14px;font-weight:700;letter-spacing:1px}.brand small{display:block;color:var(--muted);font:10px system-ui;letter-spacing:2px;margin-top:3px}.cube{width:32px;height:32px;background:#80bb52;border:3px solid #a8db67;box-shadow:inset -8px -8px #497448,4px 4px #081819;transform:rotate(-8deg)}.offline{color:var(--muted);font-size:12px;display:flex;align-items:center;gap:8px}.offline:before{content:"";width:7px;height:7px;background:var(--green)}main{min-height:calc(100vh - 180px)}.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:25px;align-items:center;padding:52px 0 26px}.eyebrow{font:700 11px Consolas,monospace;letter-spacing:2px;color:var(--teal);text-transform:uppercase;margin:0 0 18px}.hero h1{font-family:Consolas,"Courier New",monospace;font-size:clamp(36px,4.5vw,57px);line-height:1.08;letter-spacing:-2px;margin:0 0 22px;text-shadow:3px 3px #0005}.hero h1 span{display:block;color:var(--green);font-size:.7em;letter-spacing:-1px;margin-top:12px}.intro{color:#bacabf;font-size:15px;max-width:450px;margin:0 0 24px}.chips{display:flex;flex-wrap:wrap;gap:9px}.chip{font-size:11px;border:1px solid var(--line);padding:5px 9px;color:#cbd7cd}.landscape{width:100%;height:auto;display:block;filter:drop-shadow(0 16px 18px #0003)}.scene-caption{font:10px Consolas,monospace;color:#819a8a;text-align:right;letter-spacing:2px;margin:4px 12px 0}.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:18px 0}.section-head h2{font-size:18px;margin:0}.section-head span{font:11px Consolas,monospace;color:var(--muted)}fieldset{border:0;padding:0;margin:0;min-width:0}.deck-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.deck{display:block;position:relative;border:2px solid var(--line);background:var(--panel);padding:23px 22px 20px;cursor:pointer;transition:transform .18s,border-color .18s;min-height:190px;box-shadow:0 5px #091819}.deck:hover{transform:translateY(-3px);border-color:#75906c}.deck input{position:absolute}.deck-icon{display:grid;place-items:center;width:38px;height:38px;background:#263f36;color:var(--green);font-size:24px;margin-bottom:17px;font-family:Consolas,monospace}.deck h3{font-size:17px;margin:0 0 6px}.deck p{font-size:12px;color:var(--muted);margin:0 0 16px}.deck .meta{display:flex;gap:12px;font:12px Consolas,monospace;color:#d8e6cb}.deck .tick{position:absolute;right:18px;top:20px;width:19px;height:19px;border:1px solid #647c70;text-align:center;font:700 14px system-ui;color:transparent}.deck-grid input:checked+label{border-color:var(--green);background:#263d30}.deck-grid input:checked+label .tick{background:var(--green);color:#203624;border-color:var(--green)}.start-actions{display:flex;align-items:center;gap:24px;margin:28px 0 18px}.primary{border:2px solid #caef95;border-radius:0;background:var(--green);color:#213421;font-weight:800;padding:14px 24px;box-shadow:0 5px #5e8038;transition:filter .15s,transform .15s}.primary:hover:not(:disabled){filter:brightness(1.08);transform:translateY(-1px)}.primary:active:not(:disabled){transform:translateY(3px);box-shadow:0 2px #5e8038}.arrow{padding-left:20px}.hint{font-size:12px;color:var(--muted)}.rules{color:#9cb3a4;font-size:12px;margin:18px 0 30px}.rules strong{color:#d0decb}.game-wrap{width:min(760px,100%);margin:42px auto}.game-top{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:15px}.game-top p{margin:0}.score{font-family:Consolas,monospace;font-size:14px;color:var(--green)}.progress{width:100%;height:9px;appearance:none;border:0;background:#28403b;margin-bottom:22px;display:block}.progress::-webkit-progress-bar{background:#28403b}.progress::-webkit-progress-value{background:var(--teal);transition:width .25s}.progress::-moz-progress-bar{background:var(--teal)}.question-card{background:var(--paper);color:var(--ink);border:3px solid #dce4cd;box-shadow:8px 8px #0004;padding:32px;animation:appear .25s ease-out}.card-header{display:flex;justify-content:space-between;align-items:center;gap:15px;font:12px Consolas,monospace;margin-bottom:26px;color:#576a59}.category{background:#e4ead7;border:1px solid #d0dbc1;padding:6px 10px;color:#345f41;font-weight:700}.question-card h2{font-size:clamp(22px,3vw,29px);line-height:1.35;letter-spacing:-.5px;margin:0 0 27px}.answers{display:grid;gap:12px}.answer{display:flex;gap:14px;align-items:center;border:2px solid #d8ddce;background:#fffef6;padding:15px 16px;min-height:64px;cursor:pointer;transition:border-color .15s,background .15s;font-size:16px}.answer:hover{border-color:#77977c}.letter{display:grid;place-items:center;min-width:31px;height:31px;border:1px solid #cbd5c3;background:#edf0e4;font:700 15px Consolas,monospace}.answers input:checked+label{border-color:#397f71;background:#e1f1e8}.answers input:checked+label .letter{background:#397f71;color:white;border-color:#397f71}.answer.correct{border-color:var(--good)!important;background:#e1efd9!important}.answer.wrong{border-color:var(--bad)!important;background:#f8e3dc!important}.answers input:disabled+label{cursor:default}.mark{margin-left:auto;font-size:12px;font-weight:700;min-width:85px;text-align:right}.correct .mark{color:var(--good)}.wrong .mark{color:var(--bad)}.card-bottom{margin-top:26px;border-top:1px solid #d6decc;padding-top:23px;display:flex;justify-content:space-between;align-items:center;gap:16px}.card-bottom .hint{color:#667460}.question-card .primary{font-size:14px;padding:12px 17px}.feedback{margin-top:22px;padding:15px 17px;border-left:4px solid var(--good);background:#e5eddd;font-size:14px}.feedback.bad{border-color:var(--bad);background:#f1e7db}.feedback p{margin:5px 0 0}.game-note{text-align:center;font-size:11px;color:#91a99b;margin-top:22px}.secondary{background:transparent;border:1px solid #6d8c7b;color:#e8f2de;padding:13px 20px;font-weight:600;cursor:pointer}.results{width:min(840px,100%);margin:44px auto}.result-hero{background:var(--panel);border:1px solid var(--line);padding:35px;text-align:center;position:relative;overflow:hidden}.trophy{font:42px Consolas,monospace;color:var(--green);margin-bottom:10px}.result-hero h1{font:700 clamp(25px,4vw,36px) Consolas,monospace;margin:10px 0}.result-hero p{color:#b7cbbb;margin:12px auto;max-width:550px}.percent{color:var(--teal);font:700 17px Consolas,monospace}.result-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:15px;margin-top:25px}.review-title{font-size:19px;margin:32px 0 18px}.review-list{display:grid;gap:12px;list-style:none;padding:0}.review-item{background:var(--paper);color:var(--ink);border-left:5px solid var(--good);padding:17px 20px}.review-item.missed{border-color:var(--bad)}.review-item h3{font-size:15px;margin:0 0 8px}.review-item p{font-size:13px;margin:5px 0}.review-item .explanation{color:#5a6b59;margin-top:9px}.status-word{color:var(--good);font-weight:750}.missed .status-word{color:var(--bad)}.footer{border-top:1px solid var(--line);padding:23px 0 24px;margin-top:32px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#91a698;font-size:10px}.footer span:last-child{font-family:Consolas,monospace;letter-spacing:1px}.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}.confetti i{position:absolute;top:-20px;width:10px;height:10px;animation:fall 2.8s ease-in forwards}@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@media(max-width:760px){.shell{width:calc(100% - 32px)}.hero{grid-template-columns:1fr;gap:20px;padding-top:32px}.hero h1{font-size:43px}.hero-art{max-width:490px;width:100%;margin:auto}.deck-grid{gap:10px}.deck{padding:17px 13px;min-height:210px}.deck h3{font-size:15px}.deck .meta{flex-direction:column;gap:2px}.deck .tick{right:12px;top:15px}.section-head span{font-size:10px}.start-actions{gap:15px}.question-card{padding:24px}.mark{min-width:0}.game-wrap{margin-top:30px}}@media(max-width:480px){.topbar{height:74px}.brand{font-size:11px;gap:10px}.brand small{font-size:8px}.cube{width:25px;height:25px}.offline{font-size:10px}.hero h1{font-size:38px}.intro{font-size:14px}.hero-art{margin-top:-8px}.deck-grid{grid-template-columns:1fr}.deck{min-height:unset;padding:15px 18px 15px 70px}.deck-icon{position:absolute;left:16px;top:20px;width:36px;height:36px;margin:0}.deck h3{font-size:16px;padding-right:20px}.deck p{margin-bottom:8px}.deck .meta{flex-direction:row}.start-actions{align-items:stretch;flex-direction:column;gap:12px}.start-actions .hint{text-align:center}.section-head span{display:none}.question-card{padding:20px 16px;box-shadow:5px 5px #0004}.card-header{font-size:10px;gap:6px}.category{padding:6px}.answer{font-size:15px;padding:12px 10px;gap:10px;flex-wrap:wrap}.answer .answer-text{flex:1;min-width:140px}.mark{flex-basis:100%;text-align:left;padding-left:41px}.mark:empty{display:none}.card-bottom{flex-direction:column;align-items:stretch}.card-bottom .hint{text-align:center}.result-hero{padding:25px 17px}.result-actions{flex-direction:column}.game-top{font-size:12px}.score{font-size:12px}.footer{font-size:10px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.confetti{display:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="topbar"><div class="brand"><span class="cube" aria-hidden="true"></span><div>WYZWANIE WIEDZY<small>NIEOFICJALNY QUIZ MINECRAFT</small></div></div><span class="offline">Gotowe na offline</span></header>
+<main id="main">
+<section id="start" aria-labelledby="title">
+<div class="hero"><div><p class="eyebrow">Twój ekwipunek? Wiedza.</p><h1 id="title">Minecraft<span>Wyzwanie Wiedzy</span></h1><p class="intro">Od pierwszego kilofa po wyprawę do Endu. Odkrywaj karty, sprawdź swoją wiedzę i zbierz jak najwięcej punktów.</p><div class="chips"><span class="chip">72 pytania</span><span class="chip">9 kategorii</span><span class="chip">Bez limitu czasu</span></div></div>
+<div class="hero-art"><svg class="landscape" viewBox="0 0 520 310" role="img" aria-labelledby="scene-title" shape-rendering="crispEdges"><title id="scene-title">Autorski blokowy krajobraz: zielone wyspy, ziemia, drzewa, góry i kwadratowe słońce</title><defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#213e40"/><stop offset="1" stop-color="#102827"/></linearGradient><pattern id="dirt" width="28" height="25" patternUnits="userSpaceOnUse"><rect width="28" height="25" fill="#71533d"/><rect x="5" y="5" width="7" height="6" fill="#8c6748"/><rect x="19" y="17" width="9" height="8" fill="#513e31"/></pattern></defs><path fill="url(#sky)" d="M20 20h480v245H20z"/><path fill="#355552" d="M20 160h45v-35h35v-36h45v36h31v42h45v-65h36V70h38v35h28v38h43v-29h40v48h94v103H20z"/><path fill="#52706a" d="M222 102h35V70h38v35h28v18h-45v-21zM100 89h45v36h-45z"/><path fill="#f5da88" d="M391 44h47v47h-47z"/><path fill="#fff0b5" d="M391 44h35v11h-35z"/><path fill="#b2c9b5" opacity=".32" d="M40 56h56v12H40zM71 45h51v12H71zM291 37h42v10h-42zM319 47h45v10h-45z"/>
+<path fill="#314d35" d="M20 212h36v-30h43v20h63v-17h68v29h50v-30h65v19h62v-12h93v74H20z"/>
+<path fill="url(#dirt)" d="M36 222h117v48h-25v24H62v-15H36zM167 200h195v66h-30v28H204v-14h-37zM383 224h117v48h-29v22h-62v-13h-26z"/>
+<path fill="#95cb61" d="M36 211h117v17H36zM167 188h195v18H167zM383 213h117v17H383z"/><path fill="#4f873e" d="M36 228h24v9h18v-9h37v14h16v-14h22v-5H36zM167 206h22v13h15v-13h63v9h20v-9h40v15h14v-15h21v-6H167zM383 230h27v12h15v-12h46v8h14v-8h15v-6H383z"/>
+<path fill="#614630" d="M91 149h15v62H91zM286 120h18v68h-18zM431 159h13v54h-13z"/><path fill="#8d6540" d="M91 149h5v62h-5zM286 120h6v68h-6z"/>
+<path fill="#467e44" d="M64 124h65v40H64zM74 108h46v30H74zM253 82h81v57h-81zM266 64h56v31h-56zM410 138h56v37h-56zM420 123h36v26h-36z"/><path fill="#72ad52" d="M64 124h65v13H64zM74 108h46v13H74zM253 82h81v16h-81zM266 64h56v16h-56zM410 138h56v12h-56zM420 123h36v12h-36z"/><path fill="#558e45" d="M270 101h22v18h-22zM307 115h27v24h-27zM108 143h21v21h-21zM446 157h20v18h-20z"/>
+<path fill="#73928b" d="M210 166h31v22h-31z"/><path fill="#a2b4a0" d="M210 166h31v7h-31z"/><path fill="#5dbca9" d="M240 206h28v60h-12v28h-16z"/><path fill="#96e2c3" d="M240 206h7v60h-7z"/><path fill="#f0d786" d="M180 178h5v10h-5zM348 178h5v10h-5z"/><path fill="#d4e583" d="M176 173h13v8h-13zM344 173h13v8h-13z"/>
+<path fill="#b8e86d" opacity=".7" d="M38 39h4v4h-4zM470 104h4v4h-4zM359 62h4v4h-4z"/></svg><p class="scene-caption">NOWY ŚWIAT. NOWE WYZWANIE.</p></div></div>
+<div class="section-head"><h2>Wybierz swoją talię</h2><span>01 / PRZYGODA ZACZYNA SIĘ TUTAJ</span></div>
+<form id="deck-form"><fieldset><legend class="sr-only">Liczba kart w rozgrywce</legend><div class="deck-grid">
+<input class="sr-only" type="radio" name="deck" value="5" id="deck5" checked><label class="deck" for="deck5"><span class="deck-icon" aria-hidden="true">⚒</span><span class="tick" aria-hidden="true">✓</span><h3>Szybka przygoda</h3><p>Mała wyprawa na dobry początek.</p><div class="meta"><span>5 kart</span><span>maks. 5 punktów</span></div></label>
+<input class="sr-only" type="radio" name="deck" value="15" id="deck15"><label class="deck" for="deck15"><span class="deck-icon" aria-hidden="true">◇</span><span class="tick" aria-hidden="true">✓</span><h3>Wyprawa odkrywcy</h3><p>Więcej odkryć, więcej satysfakcji.</p><div class="meta"><span>15 kart</span><span>maks. 15 punktów</span></div></label>
+<input class="sr-only" type="radio" name="deck" value="30" id="deck30"><label class="deck" for="deck30"><span class="deck-icon" aria-hidden="true">♜</span><span class="tick" aria-hidden="true">✓</span><h3>Wyzwanie mistrza</h3><p>Wielka podróż przez świat wiedzy.</p><div class="meta"><span>30 kart</span><span>maks. 30 punktów</span></div></label>
+</div></fieldset><div class="start-actions"><button class="primary" type="submit">Rozpocznij przygodę <span class="arrow" aria-hidden="true">→</span></button><span class="hint">Wybierz talię. Resztę odkryjesz po drodze.</span></div></form>
+<p class="rules"><strong>Jak grać?</strong> Wybierz A, B lub C i zatwierdź odpowiedź. Poprawna odpowiedź to 1 punkt. Po sprawdzeniu poznasz wyjaśnienie. Kolejną kartę odkrywasz we własnym tempie.</p>
+</section>
+<section id="game" class="game-wrap" aria-label="Rozgrywka" hidden><div class="game-top"><p id="deck-name"></p><p class="score" id="score" aria-live="polite"></p></div><label class="sr-only" for="progress">Liczba sprawdzonych kart</label><progress class="progress" id="progress" value="0" max="5"></progress><div id="card-mount"></div><p class="game-note">Bez pośpiechu. Wybór możesz zmieniać do chwili sprawdzenia. <br>Klawiatura: Tab i strzałki do wyboru, Enter lub Spacja na przycisku.</p></section>
+<section id="results" class="results" aria-labelledby="result-title" hidden></section>
+</main>
+<footer class="footer"><span>Nieoficjalna gra fanowska. Nie jest powiązana z Mojang ani Microsoft</span><span>BEZ KONTA · BEZ ZAPISU · 100% PRZYGODY</span></footer>
+</div><div id="confetti" class="confetti" aria-hidden="true"></div><noscript><p>Włącz JavaScript w przeglądarce, aby uruchomić quiz. Gra nie korzysta z internetu ani nie zapisuje danych.</p></noscript>
+<script>
+"use strict";
+// Autorska baza: identyfikator, kategoria, pytanie, dokładnie trzy odpowiedzi,
+// indeks poprawnej odpowiedzi (od 0) i krótkie wyjaśnienie.
+const QUESTIONS = [
+  {
+    "id": "mc-001",
+    "category": "Moby",
+    "question": "Który mob syczy przed wybuchem?",
+    "answers": [
+      "Creeper",
+      "Szkielet",
+      "Slime"
+    ],
+    "correctIndex": 0,
+    "explanation": "Creeper ostrzega charakterystycznym syczeniem, zanim wybuchnie."
+  },
+  {
+    "id": "mc-002",
+    "category": "Moby",
+    "question": "Czym można oswoić wilka?",
+    "answers": [
+      "Kośćmi",
+      "Pszenicą",
+      "Jabłkami"
+    ],
+    "correctIndex": 0,
+    "explanation": "Podawanie kości dzikiemu wilkowi daje szansę na jego oswojenie."
+  },
+  {
+    "id": "mc-003",
+    "category": "Moby",
+    "question": "Które zwierzę można wydoić pustym wiadrem?",
+    "answers": [
+      "Krowę",
+      "Świnię",
+      "Kurę"
+    ],
+    "correctIndex": 0,
+    "explanation": "Użycie pustego wiadra na krowie pozwala zdobyć wiadro mleka."
+  },
+  {
+    "id": "mc-004",
+    "category": "Moby",
+    "question": "Który z tych mobów strzela z łuku?",
+    "answers": [
+      "Szkielet",
+      "Creeper",
+      "Zombie"
+    ],
+    "correctIndex": 0,
+    "explanation": "Szkielety zwykle noszą łuki i atakują strzałami z dystansu."
+  },
+  {
+    "id": "mc-005",
+    "category": "Moby",
+    "question": "Który mob potrafi się teleportować?",
+    "answers": [
+      "Enderman",
+      "Krowa",
+      "Owca"
+    ],
+    "correctIndex": 0,
+    "explanation": "Enderman potrafi teleportować się na krótkie odległości."
+  },
+  {
+    "id": "mc-006",
+    "category": "Moby",
+    "question": "Czym można strzyc owce, nie zabijając ich?",
+    "answers": [
+      "Nożycami",
+      "Łopatą",
+      "Motyką"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nożyce pozwalają zebrać wełnę z owcy. Może ona odrosnąć po zjedzeniu trawy."
+  },
+  {
+    "id": "mc-007",
+    "category": "Moby",
+    "question": "Który mob zbiera nektar z kwiatów?",
+    "answers": [
+      "Pszczoła",
+      "Nietoperz",
+      "Kałamarnica"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pszczoły odwiedzają kwiaty i wracają z nektarem do gniazd lub uli."
+  },
+  {
+    "id": "mc-008",
+    "category": "Moby",
+    "question": "Czym rozmnaża się krowy?",
+    "answers": [
+      "Pszenicą",
+      "Węglem",
+      "Nasionami dyni"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dwie dorosłe krowy nakarmione pszenicą mogą mieć cielę."
+  },
+  {
+    "id": "mc-009",
+    "category": "Surowce",
+    "question": "Co otrzymasz po przetopieniu surowego żelaza?",
+    "answers": [
+      "Sztabkę żelaza",
+      "Diament",
+      "Cegłę"
+    ],
+    "correctIndex": 0,
+    "explanation": "Przetapianie surowego żelaza daje sztabki żelaza."
+  },
+  {
+    "id": "mc-010",
+    "category": "Surowce",
+    "question": "Który surowiec służy do handlu z osadnikami?",
+    "answers": [
+      "Szmaragd",
+      "Krzemień",
+      "Kwarc"
+    ],
+    "correctIndex": 0,
+    "explanation": "Szmaragdy są podstawowym środkiem płatniczym w handlu z osadnikami."
+  },
+  {
+    "id": "mc-011",
+    "category": "Surowce",
+    "question": "Z którego bloku może wypaść krzemień?",
+    "answers": [
+      "Ze żwiru",
+      "Z ziemi",
+      "Ze śniegu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Podczas niszczenia żwiru istnieje szansa na otrzymanie krzemienia."
+  },
+  {
+    "id": "mc-012",
+    "category": "Surowce",
+    "question": "Co powstaje z piasku przetopionego w piecu?",
+    "answers": [
+      "Szkło",
+      "Papier",
+      "Obsydian"
+    ],
+    "correctIndex": 0,
+    "explanation": "Piasek można przetopić w piecu na szkło."
+  },
+  {
+    "id": "mc-013",
+    "category": "Surowce",
+    "question": "Który pył służy do budowania obwodów i mechanizmów?",
+    "answers": [
+      "Redstone",
+      "Cukier",
+      "Mączka kostna"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pył redstone przewodzi sygnały między elementami mechanizmów."
+  },
+  {
+    "id": "mc-014",
+    "category": "Surowce",
+    "question": "Co daje przetopienie kłody drewna w piecu?",
+    "answers": [
+      "Węgiel drzewny",
+      "Węgiel kamienny",
+      "Sztabkę miedzi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kłoda przetopiona w piecu daje węgiel drzewny, użyteczny jako paliwo."
+  },
+  {
+    "id": "mc-015",
+    "category": "Surowce",
+    "question": "Ile diamentów potrzeba do wytworzenia jednego bloku diamentu?",
+    "answers": [
+      "9",
+      "4",
+      "6"
+    ],
+    "correctIndex": 0,
+    "explanation": "Blok diamentu powstaje z dziewięciu diamentów na stole rzemieślniczym."
+  },
+  {
+    "id": "mc-016",
+    "category": "Surowce",
+    "question": "Z czego można uzyskać mączkę kostną w craftingu?",
+    "answers": [
+      "Z kości",
+      "Ze skóry",
+      "Z nici"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kość można przerobić na mączkę kostną, która pomaga uprawiać wiele roślin."
+  },
+  {
+    "id": "mc-017",
+    "category": "Narzędzia",
+    "question": "Które narzędzie najlepiej nadaje się do ścinania kłód?",
+    "answers": [
+      "Siekiera",
+      "Łopata",
+      "Motyka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Siekiera przyspiesza niszczenie kłód i wielu innych drewnianych bloków."
+  },
+  {
+    "id": "mc-018",
+    "category": "Narzędzia",
+    "question": "Czym przygotowuje się ziemię pod uprawę pszenicy?",
+    "answers": [
+      "Motyką",
+      "Mieczem",
+      "Nożycami"
+    ],
+    "correctIndex": 0,
+    "explanation": "Motyka zmienia odpowiednie bloki ziemi w pole uprawne."
+  },
+  {
+    "id": "mc-019",
+    "category": "Narzędzia",
+    "question": "Które narzędzie przyspiesza kopanie piasku i ziemi?",
+    "answers": [
+      "Łopata",
+      "Siekiera",
+      "Wędka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Łopata służy do szybkiego kopania między innymi ziemi, piasku i żwiru."
+  },
+  {
+    "id": "mc-020",
+    "category": "Narzędzia",
+    "question": "Którym z tych kilofów można wydobyć obsydian jako przedmiot?",
+    "answers": [
+      "Diamentowym",
+      "Żelaznym",
+      "Kamiennym"
+    ],
+    "correctIndex": 0,
+    "explanation": "Obsydian można zebrać diamentowym lub netherytowym kilofem. Żelazny nie wystarczy."
+  },
+  {
+    "id": "mc-021",
+    "category": "Narzędzia",
+    "question": "Który z tych kilofów wystarczy do wydobycia rudy diamentu?",
+    "answers": [
+      "Żelazny",
+      "Kamienny",
+      "Drewniany"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rudę diamentu wydobędziesz kilofem żelaznym lub lepszym pod względem poziomu wydobycia."
+  },
+  {
+    "id": "mc-022",
+    "category": "Narzędzia",
+    "question": "Jakie zaklęcie umożliwia zbieranie wielu bloków w ich pierwotnej postaci?",
+    "answers": [
+      "Jedwabny dotyk",
+      "Odrzut",
+      "Nieskończoność"
+    ],
+    "correctIndex": 0,
+    "explanation": "Jedwabny dotyk pozwala zebrać między innymi szkło i rudy w postaci bloków."
+  },
+  {
+    "id": "mc-023",
+    "category": "Narzędzia",
+    "question": "Jakie zaklęcie naprawia przedmiot za pomocą zbieranych punktów doświadczenia?",
+    "answers": [
+      "Naprawa",
+      "Ostrość",
+      "Płomień"
+    ],
+    "correctIndex": 0,
+    "explanation": "Naprawa wykorzystuje zbierane doświadczenie do odnawiania trwałości odpowiednio zaklętego wyposażenia."
+  },
+  {
+    "id": "mc-024",
+    "category": "Narzędzia",
+    "question": "Który przedmiot służy do łowienia ryb?",
+    "answers": [
+      "Wędka",
+      "Kompas",
+      "Zegar"
+    ],
+    "correctIndex": 0,
+    "explanation": "Wędka pozwala łowić ryby, a czasem także inne przedmioty."
+  },
+  {
+    "id": "mc-025",
+    "category": "Crafting",
+    "question": "Ile desek potrzeba do stworzenia stołu rzemieślniczego?",
+    "answers": [
+      "4",
+      "2",
+      "8"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cztery deski ułożone w kwadrat tworzą stół rzemieślniczy."
+  },
+  {
+    "id": "mc-026",
+    "category": "Crafting",
+    "question": "Ile pól ma siatka craftingu na stole rzemieślniczym?",
+    "answers": [
+      "9",
+      "4",
+      "12"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stół rzemieślniczy udostępnia siatkę 3 × 3, czyli dziewięć pól."
+  },
+  {
+    "id": "mc-027",
+    "category": "Crafting",
+    "question": "Z jakiego zboża wytwarza się chleb?",
+    "answers": [
+      "Z pszenicy",
+      "Z trzciny cukrowej",
+      "Z bambusa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Trzy sztuki pszenicy ułożone w jednym rzędzie dają chleb."
+  },
+  {
+    "id": "mc-028",
+    "category": "Crafting",
+    "question": "Ile bloków bruku potrzeba do zwykłego pieca?",
+    "answers": [
+      "8",
+      "4",
+      "6"
+    ],
+    "correctIndex": 0,
+    "explanation": "Osiem bloków bruku otacza puste środkowe pole siatki craftingu pieca."
+  },
+  {
+    "id": "mc-029",
+    "category": "Crafting",
+    "question": "Która para składników wystarcza do wytworzenia pochodni?",
+    "answers": [
+      "Patyk i węgiel",
+      "Patyk i żelazo",
+      "Nić i piasek"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pochodnie tworzy się z patyka i węgla kamiennego lub drzewnego."
+  },
+  {
+    "id": "mc-030",
+    "category": "Crafting",
+    "question": "Z czego wytwarza się papier?",
+    "answers": [
+      "Z trzciny cukrowej",
+      "Z liści",
+      "Z wełny"
+    ],
+    "correctIndex": 0,
+    "explanation": "Trzy sztuki trzciny cukrowej w rzędzie dają trzy arkusze papieru."
+  },
+  {
+    "id": "mc-031",
+    "category": "Crafting",
+    "question": "Których materiałów potrzeba do zwykłego łóżka?",
+    "answers": [
+      "Wełny i desek",
+      "Skóry i kamienia",
+      "Piasku i żelaza"
+    ],
+    "correctIndex": 0,
+    "explanation": "Łóżko tworzy się z trzech bloków wełny jednego koloru i trzech desek."
+  },
+  {
+    "id": "mc-032",
+    "category": "Crafting",
+    "question": "Ile sztabek żelaza potrzeba do wytworzenia wiadra?",
+    "answers": [
+      "3",
+      "5",
+      "8"
+    ],
+    "correctIndex": 0,
+    "explanation": "Trzy sztabki żelaza ułożone w kształt litery V tworzą wiadro."
+  },
+  {
+    "id": "mc-033",
+    "category": "Biomy",
+    "question": "W którym biomie naturalnie rosną wysokie drzewa dżunglowe i liany?",
+    "answers": [
+      "W dżungli",
+      "Na pustyni",
+      "Na lodowych kolcach"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dżungla wyróżnia się drzewami dżunglowymi i licznymi lianami."
+  },
+  {
+    "id": "mc-034",
+    "category": "Biomy",
+    "question": "Który biom kojarzy się z piaskiem, kaktusami i suchymi krzewami?",
+    "answers": [
+      "Pustynia",
+      "Bagno",
+      "Tajga"
+    ],
+    "correctIndex": 0,
+    "explanation": "Na pustyni dominują piasek, kaktusy i suche krzewy."
+  },
+  {
+    "id": "mc-035",
+    "category": "Biomy",
+    "question": "Jakie drzewa są charakterystyczne dla tajgi?",
+    "answers": [
+      "Świerki",
+      "Akacje",
+      "Drzewa dżunglowe"
+    ],
+    "correctIndex": 0,
+    "explanation": "Świerki są typowymi drzewami biomów tajgi."
+  },
+  {
+    "id": "mc-036",
+    "category": "Biomy",
+    "question": "Które drzewa są charakterystyczne dla sawanny?",
+    "answers": [
+      "Akacje",
+      "Świerki",
+      "Wiśniowe drzewa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Akacje, ze swoimi płaskimi koronami, są charakterystyczne dla sawanny."
+  },
+  {
+    "id": "mc-037",
+    "category": "Biomy",
+    "question": "Który biom ma dużo terakoty i czerwonego piasku?",
+    "answers": [
+      "Badlandy",
+      "Brzozowy las",
+      "Równiny"
+    ],
+    "correctIndex": 0,
+    "explanation": "Badlandy wyróżniają się warstwami kolorowej terakoty i czerwonym piaskiem."
+  },
+  {
+    "id": "mc-038",
+    "category": "Biomy",
+    "question": "Gdzie naturalnie występują duże grzyby i mooshroomy?",
+    "answers": [
+      "Na grzybowych polach",
+      "Na pustyni",
+      "W tajdze"
+    ],
+    "correctIndex": 0,
+    "explanation": "Grzybowe pola to biom z grzybnią, wielkimi grzybami i mooshroomami."
+  },
+  {
+    "id": "mc-039",
+    "category": "Biomy",
+    "question": "W jakim środowisku naturalnie generują się rafy koralowe?",
+    "answers": [
+      "W ciepłym oceanie",
+      "W zamarzniętej rzece",
+      "Na równinach"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rafy koralowe są charakterystyczne dla ciepłych oceanów."
+  },
+  {
+    "id": "mc-040",
+    "category": "Biomy",
+    "question": "Które drzewo ma charakterystyczną białą korę z ciemnymi plamkami?",
+    "answers": [
+      "Brzoza",
+      "Dąb",
+      "Świerk"
+    ],
+    "correctIndex": 0,
+    "explanation": "Biała kora z ciemnymi plamkami pozwala łatwo rozpoznać brzozę."
+  },
+  {
+    "id": "mc-041",
+    "category": "Budowanie",
+    "question": "Co stanie się z piaskiem umieszczonym bez podpory?",
+    "answers": [
+      "Spadnie",
+      "Zamieni się w szkło",
+      "Zacznie świecić"
+    ],
+    "correctIndex": 0,
+    "explanation": "Piasek podlega grawitacji i spada, gdy nic go nie podtrzymuje."
+  },
+  {
+    "id": "mc-042",
+    "category": "Budowanie",
+    "question": "Który z tych bloków przepuszcza światło i pozwala oglądać krajobraz?",
+    "answers": [
+      "Szkło",
+      "Bruk",
+      "Ziemia"
+    ],
+    "correctIndex": 0,
+    "explanation": "Szkło jest przezroczyste i dobrze nadaje się na okna."
+  },
+  {
+    "id": "mc-043",
+    "category": "Budowanie",
+    "question": "Do czego przydaje się drabina?",
+    "answers": [
+      "Do wspinania się po pionowej ścianie",
+      "Do przetapiania rud",
+      "Do oswajania kotów"
+    ],
+    "correctIndex": 0,
+    "explanation": "Drabiny umożliwiają poruszanie się w górę i w dół wzdłuż ścian."
+  },
+  {
+    "id": "mc-044",
+    "category": "Budowanie",
+    "question": "Ile półpłytek ustawionych jedna na drugiej wypełni wysokość jednego bloku?",
+    "answers": [
+      "2",
+      "3",
+      "4"
+    ],
+    "correctIndex": 0,
+    "explanation": "Półpłytka ma połowę wysokości bloku. Dwie pasujące półpłytki tworzą podwójną półpłytkę."
+  },
+  {
+    "id": "mc-045",
+    "category": "Budowanie",
+    "question": "Czym można otworzyć żelazne drzwi?",
+    "answers": [
+      "Sygnałem redstone, na przykład z przycisku",
+      "Samym kliknięciem pustą ręką",
+      "Rzuceniem nasion"
+    ],
+    "correctIndex": 0,
+    "explanation": "Żelazne drzwi wymagają sygnału redstone, na przykład z przycisku, dźwigni lub płytki naciskowej."
+  },
+  {
+    "id": "mc-046",
+    "category": "Budowanie",
+    "question": "Jaki blok pozwala przenieść sygnał redstone z opóźnieniem i odnowić jego siłę?",
+    "answers": [
+      "Przekaźnik redstone",
+      "Stół rzemieślniczy",
+      "Kompostownik"
+    ],
+    "correctIndex": 0,
+    "explanation": "Przekaźnik redstone odnawia sygnał i wprowadza ustawiane opóźnienie."
+  },
+  {
+    "id": "mc-047",
+    "category": "Budowanie",
+    "question": "Który blok przechowuje przedmioty i może połączyć się z drugą taką samą skrzynią?",
+    "answers": [
+      "Zwykła skrzynia",
+      "Piec",
+      "Stół do zaklęć"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dwie odpowiednio ustawione zwykłe skrzynie tworzą dużą skrzynię."
+  },
+  {
+    "id": "mc-048",
+    "category": "Budowanie",
+    "question": "Który blok przesuwa inne bloki po otrzymaniu sygnału redstone?",
+    "answers": [
+      "Tłok",
+      "Beczka",
+      "Biblioteczka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tłok po otrzymaniu sygnału wysuwa ramię i może przesuwać wiele rodzajów bloków."
+  },
+  {
+    "id": "mc-049",
+    "category": "Przetrwanie",
+    "question": "Co najlepiej zrobić przed pierwszą nocą w trybie przetrwania?",
+    "answers": [
+      "Przygotować schronienie i światło",
+      "Wyrzucić wszystkie narzędzia",
+      "Wejść do lawy"
+    ],
+    "correctIndex": 0,
+    "explanation": "Schronienie i oświetlenie pomagają chronić się przed nocnymi potworami."
+  },
+  {
+    "id": "mc-050",
+    "category": "Przetrwanie",
+    "question": "Co usuwa wypicie wiadra mleka?",
+    "answers": [
+      "Efekty statusu, także korzystne",
+      "Całe doświadczenie",
+      "Wszystkie przedmioty z ekwipunku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mleko usuwa efekty statusu, więc może usunąć zarówno truciznę, jak i przydatne efekty mikstur."
+  },
+  {
+    "id": "mc-051",
+    "category": "Przetrwanie",
+    "question": "Co oznaczają znikające bąbelki podczas nurkowania?",
+    "answers": [
+      "Kończy się zapas powietrza",
+      "Rośnie poziom głodu",
+      "Naprawia się zbroja"
+    ],
+    "correctIndex": 0,
+    "explanation": "Wskaźnik bąbelków pokazuje zapas powietrza. Po jego wyczerpaniu gracz zaczyna się topić."
+  },
+  {
+    "id": "mc-052",
+    "category": "Przetrwanie",
+    "question": "W którym wymiarze można bezpiecznie spać w łóżku?",
+    "answers": [
+      "W zwykłym świecie (Overworld)",
+      "W Netherze",
+      "W Endzie"
+    ],
+    "correctIndex": 0,
+    "explanation": "Łóżko służy do snu w zwykłym świecie. Próba użycia go w Netherze lub Endzie wywołuje wybuch."
+  },
+  {
+    "id": "mc-053",
+    "category": "Przetrwanie",
+    "question": "Które pożywienie można otrzymać po upieczeniu surowego ziemniaka?",
+    "answers": [
+      "Pieczonego ziemniaka",
+      "Chleb",
+      "Złotą marchewkę"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zwykły ziemniak upieczony w piecu staje się pieczonym ziemniakiem."
+  },
+  {
+    "id": "mc-054",
+    "category": "Przetrwanie",
+    "question": "Który przedmiot pomaga chronić głowę przed atakami?",
+    "answers": [
+      "Hełm",
+      "Kompas",
+      "Pochodnia"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hełm jest elementem zbroi i zwiększa ochronę gracza."
+  },
+  {
+    "id": "mc-055",
+    "category": "Przetrwanie",
+    "question": "Dlaczego kopanie prosto w dół jest ryzykowne?",
+    "answers": [
+      "Można wpaść do jaskini lub lawy",
+      "Zawsze niszczy cały ekwipunek",
+      "Natychmiast przywołuje smoka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pod kopanym blokiem może być przepaść lub lawa, dlatego lepiej kopać bezpieczniejszym sposobem."
+  },
+  {
+    "id": "mc-056",
+    "category": "Przetrwanie",
+    "question": "Co zwykle upuszcza kamień wydobyty kilofem bez zaklęć?",
+    "answers": [
+      "Bruk",
+      "Obsydian",
+      "Żwir"
+    ],
+    "correctIndex": 0,
+    "explanation": "Zwykły kamień wydobyty kilofem bez Jedwabnego dotyku daje bruk."
+  },
+  {
+    "id": "mc-057",
+    "category": "Nether",
+    "question": "Z jakiego bloku buduje się ramę portalu do Netheru?",
+    "answers": [
+      "Z obsydianu",
+      "Z bruku",
+      "Z płaczącego obsydianu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Portal do Netheru wymaga ramy ze zwykłego obsydianu. Płaczący obsydian go nie zastępuje."
+  },
+  {
+    "id": "mc-058",
+    "category": "Nether",
+    "question": "Czym można zapalić poprawnie zbudowany portal do Netheru?",
+    "answers": [
+      "Krzesiwem",
+      "Wiadrem wody",
+      "Nożycami"
+    ],
+    "correctIndex": 0,
+    "explanation": "Krzesiwo może wzniecić ogień wewnątrz obsydianowej ramy i uruchomić portal."
+  },
+  {
+    "id": "mc-059",
+    "category": "Nether",
+    "question": "Który z tych mobów jest związany z fortecami Netheru?",
+    "answers": [
+      "Płomyk (Blaze)",
+      "Strażnik",
+      "Mooshroom"
+    ],
+    "correctIndex": 0,
+    "explanation": "Płomyki spotyka się w fortecach Netheru, także przy ich spawnerach."
+  },
+  {
+    "id": "mc-060",
+    "category": "Nether",
+    "question": "Czym zasila się statyw alchemiczny?",
+    "answers": [
+      "Płomiennym proszkiem",
+      "Pyłem redstone",
+      "Węglem drzewnym"
+    ],
+    "correctIndex": 0,
+    "explanation": "Płomienny proszek jest paliwem statywu alchemicznego."
+  },
+  {
+    "id": "mc-061",
+    "category": "Nether",
+    "question": "Na czym sadzi się netherowe brodawki?",
+    "answers": [
+      "Na piasku dusz",
+      "Na zwykłym piasku",
+      "Na bruku"
+    ],
+    "correctIndex": 0,
+    "explanation": "Netherowe brodawki rosną na piasku dusz, a nie na glebie dusz ani zwykłym piasku."
+  },
+  {
+    "id": "mc-062",
+    "category": "Nether",
+    "question": "Który przedmiot dorosły piglin przyjmuje podczas barteru?",
+    "answers": [
+      "Sztabkę złota",
+      "Diament",
+      "Sztabkę żelaza"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dorosłe pigliny wymieniają sztabki złota na losowe przedmioty. Pigliny okrutnicy nie prowadzą barteru."
+  },
+  {
+    "id": "mc-063",
+    "category": "Nether",
+    "question": "Co dzieje się ze zwykłą wodą wylaną z wiadra w Netherze?",
+    "answers": [
+      "Odparowuje",
+      "Tworzy jezioro",
+      "Zamienia się w lód"
+    ],
+    "correctIndex": 0,
+    "explanation": "Woda wylana bezpośrednio z wiadra w Netherze odparowuje zamiast tworzyć źródło."
+  },
+  {
+    "id": "mc-064",
+    "category": "Nether",
+    "question": "Ile bloków obsydianu potrzeba na najmniejszą ramę portalu, jeśli pominiemy narożniki?",
+    "answers": [
+      "10",
+      "8",
+      "14"
+    ],
+    "correctIndex": 0,
+    "explanation": "Najmniejszy portal ma wnętrze 2 × 3. Jego rama bez czterech narożników wymaga 10 bloków obsydianu."
+  },
+  {
+    "id": "mc-065",
+    "category": "End",
+    "question": "Jaki boss czeka na głównej wyspie Endu?",
+    "answers": [
+      "Smok Endu",
+      "Wither",
+      "Prastrażnik"
+    ],
+    "correctIndex": 0,
+    "explanation": "Smok Endu jest bossem zamieszkującym główną wyspę Endu."
+  },
+  {
+    "id": "mc-066",
+    "category": "End",
+    "question": "Co służy do uzupełniania pustych ram portalu do Endu?",
+    "answers": [
+      "Oczy Endera",
+      "Perły Endera",
+      "Diamenty"
+    ],
+    "correctIndex": 0,
+    "explanation": "W puste ramy portalu do Endu wkłada się oczy Endera, aby go aktywować."
+  },
+  {
+    "id": "mc-067",
+    "category": "End",
+    "question": "Z jakich dwóch składników wytwarza się oko Endera?",
+    "answers": [
+      "Perły Endera i płomiennego proszku",
+      "Diamentu i węgla",
+      "Szmaragdu i krzemienia"
+    ],
+    "correctIndex": 0,
+    "explanation": "Oko Endera powstaje z perły Endera połączonej z płomiennym proszkiem."
+  },
+  {
+    "id": "mc-068",
+    "category": "End",
+    "question": "Co leczy smoka Endu podczas walki przy obsydianowych wieżach?",
+    "answers": [
+      "Kryształy Endu",
+      "Pochodnie",
+      "Jaja żółwi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Kryształy na obsydianowych wieżach odnawiają zdrowie smoka, jeśli jest w ich zasięgu."
+  },
+  {
+    "id": "mc-069",
+    "category": "End",
+    "question": "Do czego służy elytra?",
+    "answers": [
+      "Do szybowania",
+      "Do oddychania pod wodą",
+      "Do wydobywania rud"
+    ],
+    "correctIndex": 0,
+    "explanation": "Elytra zakładana na miejsce napierśnika pozwala szybować."
+  },
+  {
+    "id": "mc-070",
+    "category": "End",
+    "question": "Gdzie w Endzie można znaleźć elytrę?",
+    "answers": [
+      "Na statku Endu",
+      "Na każdej obsydianowej wieży",
+      "W każdym bloku kamienia Endu"
+    ],
+    "correctIndex": 0,
+    "explanation": "Elytra znajduje się w ramce wewnątrz statku Endu. Nie każde miasto Endu ma statek."
+  },
+  {
+    "id": "mc-071",
+    "category": "End",
+    "question": "Jaki efekt mogą wywołać pociski shulkera?",
+    "answers": [
+      "Lewitację",
+      "Odporność na ogień",
+      "Nocne widzenie"
+    ],
+    "correctIndex": 0,
+    "explanation": "Trafienie pociskiem shulkera powoduje lewitację, przez którą gracz unosi się w górę."
+  },
+  {
+    "id": "mc-072",
+    "category": "End",
+    "question": "Co zwykle robi rzucona perła Endera po trafieniu?",
+    "answers": [
+      "Teleportuje rzucającego do miejsca trafienia",
+      "Tworzy portal do Netheru",
+      "Przywołuje smoka"
+    ],
+    "correctIndex": 0,
+    "explanation": "Perła Endera teleportuje gracza do miejsca trafienia i zwykle zadaje mu przy tym obrażenia."
+  }
+];
+const DECK_NAMES={5:"Szybka przygoda",15:"Wyprawa odkrywcy",30:"Wyzwanie mistrza"};
+const ICONS={Moby:"♟",Surowce:"◆",Narzędzia:"⚒",Crafting:"▦",Biomy:"♧",Budowanie:"▤",Przetrwanie:"♡",Nether:"▥",End:"◇"};
+const $=id=>document.getElementById(id);
+let state={size:5,cards:[],index:0,score:0,selected:null,checked:false,history:[]};
+let confettiTimer;
+function shuffled(items){const out=[...items];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]];}return out;}
+function makeDeck(size){return shuffled(QUESTIONS).slice(0,size).map(q=>{const answers=shuffled(q.answers.map((text,index)=>({text,original:index})));return {...q,answers:answers.map(a=>a.text),correctIndex:answers.findIndex(a=>a.original===q.correctIndex)};});}
+function showScreen(id){for(const screen of ["start","game","results"])$(screen).hidden=screen!==id;}
+function stopConfetti(){clearTimeout(confettiTimer);$("confetti").replaceChildren();}
+function startGame(size){stopConfetti();state={size,cards:makeDeck(size),index:0,score:0,selected:null,checked:false,history:[]};$("deck-name").textContent=DECK_NAMES[size];showScreen("game");renderCard();window.scrollTo(0,0);}
+function element(tag,className,text){const el=document.createElement(tag);if(className)el.className=className;if(text!==undefined)el.textContent=text;return el;}
+function updateProgress(){const done=state.history.length;$("score").textContent=`◆ ${state.score} / ${state.size} punktów`;$("progress").max=state.size;$("progress").value=done;$("progress").setAttribute("aria-valuetext",`Sprawdzono ${done} z ${state.size} kart`);}
+function renderCard(){updateProgress();const q=state.cards[state.index];const card=element("article","question-card");const head=element("div","card-header");head.append(element("span","category",`${ICONS[q.category]} ${q.category}`),element("span","",`Karta ${state.index+1} z ${state.size}`));const heading=element("h2","",q.question);heading.id="question-title";heading.tabIndex=-1;card.setAttribute("aria-labelledby",heading.id);const form=element("form");form.id="answer-form";const field=element("fieldset");field.append(element("legend","sr-only","Wybierz jedną odpowiedź"));const options=element("div","answers");q.answers.forEach((text,i)=>{const input=element("input","sr-only");input.type="radio";input.name="answer";input.value=i;input.id=`answer-${i}`;const label=element("label","answer");label.htmlFor=input.id;const mark=element("span","mark");label.append(element("span","letter","ABC"[i]),element("span","answer-text",text),mark);input.addEventListener("change",()=>{if(state.checked)return;state.selected=i;$("check").disabled=false;});options.append(input,label);});field.append(options);const feedback=element("div");feedback.id="feedback";feedback.setAttribute("role","status");feedback.setAttribute("aria-live","polite");const bottom=element("div","card-bottom");bottom.append(element("span","hint","Jedna odpowiedź. Jeden punkt."));const check=element("button","primary","Sprawdź odpowiedź");check.type="submit";check.id="check";check.disabled=true;bottom.append(check);form.append(field,feedback,bottom);form.addEventListener("submit",event=>{event.preventDefault();checkAnswer();});card.append(head,heading,form);$("card-mount").replaceChildren(card);heading.focus({preventScroll:true});}
+function checkAnswer(){if(state.checked||state.selected===null||state.history.length!==state.index)return;const q=state.cards[state.index];state.checked=true;const correct=state.selected===q.correctIndex;if(correct)state.score++;state.history.push({question:q,selected:state.selected,correct});document.querySelectorAll('input[name="answer"]').forEach((input,i)=>{input.disabled=true;const label=input.nextElementSibling;const mark=label.querySelector(".mark");if(i===q.correctIndex){label.classList.add("correct");mark.textContent="✓ Poprawna";}else if(i===state.selected){label.classList.add("wrong");mark.textContent="✕ Twój wybór";}});const feedback=$("feedback");feedback.className=`feedback${correct?"":" bad"}`;feedback.append(element("strong","",correct?"✓ Dobra odpowiedź! +1 punkt":"✕ Tym razem 0 punktów. Odkrywasz coś nowego!"),element("p","",q.explanation));const next=element("button","primary",state.index===state.size-1?"Zobacz wynik →":"Następna karta →");next.type="button";next.id="next";next.addEventListener("click",()=>{if(!state.checked)return;if(state.index===state.size-1){showResults();return;}state.index++;state.selected=null;state.checked=false;renderCard();});$("check").replaceWith(next);updateProgress();next.focus({preventScroll:true});}
+function showResults(){showScreen("results");const percent=Math.round(state.score/state.size*100);const box=element("div","result-hero");box.append(element("div","trophy","♜"),element("p","eyebrow","Przygoda ukończona"));const title=element("h1","",`Zdobywasz ${state.score} z ${state.size} punktów!`);title.id="result-title";title.tabIndex=-1;box.append(title,element("div","percent",`${percent}% poprawnych odpowiedzi`));const message=percent>=80?"Świetna wyprawa! Twoja wiedza błyszczy jak diament. Czas odkryć kolejne karty!":percent>=50?"Dobra robota, odkrywco! Sporo już wiesz, a każde nowe pytanie to kolejny krok naprzód.":"Każdy mistrz zaczyna od pierwszego bloku. Nowe ciekawostki są już w Twoim ekwipunku — spróbuj kolejnej przygody!";box.append(element("p","",message));const actions=element("div","result-actions");const replay=element("button","primary","Zagraj ponownie");replay.addEventListener("click",()=>startGame(state.size));const choose=element("button","secondary","Wybierz inną talię");choose.addEventListener("click",()=>{stopConfetti();state={size:5,cards:[],index:0,score:0,selected:null,checked:false,history:[]};showScreen("start");$("title").tabIndex=-1;$("title").focus({preventScroll:true});window.scrollTo(0,0);});actions.append(replay,choose);box.append(actions);const list=element("ol","review-list");state.history.forEach((entry,i)=>{const q=entry.question;const item=element("li",`review-item${entry.correct?"":" missed"}`);item.append(element("h3","",`${i+1}. ${q.question}`),element("p","status-word",entry.correct?"✓ Poprawna odpowiedź · 1 punkt":"✕ Inna odpowiedź · 0 punktów"),element("p","",`Twoja odpowiedź: ${"ABC"[entry.selected]}. ${q.answers[entry.selected]}`),element("p","",`Prawidłowa odpowiedź: ${"ABC"[q.correctIndex]}. ${q.answers[q.correctIndex]}`),element("p","explanation",q.explanation));list.append(item);});$("results").replaceChildren(box,element("h2","review-title","Twój dziennik odkryć"),list);window.scrollTo(0,0);title.focus({preventScroll:true});if(percent>=80)celebrate();}
+function celebrate(){if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;const colors=["#b8e86d","#69ddca","#f5da88","#e5f3d5"];for(let i=0;i<45;i++){const piece=element("i");piece.style.left=`${Math.random()*100}%`;piece.style.background=colors[i%colors.length];piece.style.animationDelay=`${Math.random()*.6}s`;$("confetti").append(piece);}confettiTimer=setTimeout(stopConfetti,3600);}
+$("deck-form").addEventListener("submit",event=>{event.preventDefault();startGame(Number(new FormData(event.currentTarget).get("deck")));});
+// Stan istnieje wyłącznie w pamięci. Brak zapisu, połączeń sieciowych i śledzenia.
+</script>
+</body></html>
